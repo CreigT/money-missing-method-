@@ -1,0 +1,649 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Missing Money Method | Tc.CREIG</title>
+
+  <style>
+    :root {
+      --navy: #071426;
+      --blue: #123c69;
+      --gold: #d4af37;
+      --cream: #fff8e7;
+      --white: #ffffff;
+      --gray: #f4f6f8;
+      --dark: #1f2937;
+      --muted: #6b7280;
+      --green: #0f766e;
+      --red: #b91c1c;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--gray);
+      color: var(--dark);
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      color: var(--white);
+      padding: 70px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "$";
+      position: absolute;
+      font-size: 280px;
+      color: rgba(212, 175, 55, 0.08);
+      top: -70px;
+      right: 40px;
+      font-weight: bold;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+
+    header h2 {
+      font-size: 1.3rem;
+      font-weight: normal;
+      max-width: 850px;
+      margin: 20px auto;
+    }
+
+    header p {
+      margin-top: 25px;
+      font-size: 1rem;
+      color: #e5e7eb;
+    }
+
+    nav {
+      background: var(--white);
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 12px;
+      text-align: center;
+    }
+
+    nav a {
+      color: var(--blue);
+      text-decoration: none;
+      margin: 8px 10px;
+      font-weight: bold;
+      display: inline-block;
+    }
+
+    nav a:hover {
+      color: var(--gold);
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
+    section {
+      background: var(--white);
+      margin: 25px 0;
+      padding: 35px;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    }
+
+    h2 {
+      color: var(--blue);
+      font-size: 2rem;
+      margin-top: 0;
+      border-left: 6px solid var(--gold);
+      padding-left: 15px;
+    }
+
+    h3 {
+      color: var(--navy);
+      margin-top: 25px;
+    }
+
+    .highlight {
+      background: var(--cream);
+      border-left: 6px solid var(--gold);
+      padding: 20px;
+      border-radius: 10px;
+      margin: 25px 0;
+      font-weight: bold;
+    }
+
+    .warning {
+      background: #fff1f2;
+      border-left: 6px solid var(--red);
+      padding: 20px;
+      border-radius: 10px;
+      margin: 25px 0;
+    }
+
+    .success {
+      background: #ecfdf5;
+      border-left: 6px solid var(--green);
+      padding: 20px;
+      border-radius: 10px;
+      margin: 25px 0;
+    }
+
+    ul, ol {
+      padding-left: 25px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 25px;
+    }
+
+    .card {
+      background: var(--gray);
+      border-radius: 12px;
+      padding: 22px;
+      border-top: 5px solid var(--gold);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: var(--blue);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    th, td {
+      border: 1px solid #d1d5db;
+      padding: 14px;
+      text-align: left;
+    }
+
+    th {
+      background: var(--blue);
+      color: var(--white);
+    }
+
+    tr:nth-child(even) {
+      background: var(--gray);
+    }
+
+    a.button,
+    button {
+      background: var(--gold);
+      color: var(--navy);
+      padding: 14px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+      margin: 8px 5px;
+      font-size: 1rem;
+    }
+
+    a.button:hover,
+    button:hover {
+      background: #c49b22;
+    }
+
+    .cta {
+      text-align: center;
+      background: linear-gradient(135deg, var(--blue), var(--navy));
+      color: var(--white);
+    }
+
+    .cta h2 {
+      color: var(--gold);
+      border: none;
+      padding-left: 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: var(--navy);
+      color: var(--white);
+      font-size: 0.9rem;
+    }
+
+    .top-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      border-radius: 50%;
+      width: 52px;
+      height: 52px;
+      font-size: 22px;
+      font-weight: bold;
+      display: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      z-index: 2000;
+    }
+
+    .progress-container {
+      width: 100%;
+      height: 6px;
+      background: #ddd;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 3000;
+    }
+
+    .progress-bar {
+      height: 6px;
+      background: var(--gold);
+      width: 0%;
+    }
+
+    @media print {
+      nav, .top-btn, .progress-container, button, .button {
+        display: none !important;
+      }
+
+      body {
+        background: white;
+        color: black;
+      }
+
+      section {
+        box-shadow: none;
+        page-break-inside: avoid;
+      }
+
+      header {
+        background: white;
+        color: black;
+      }
+
+      header h1 {
+        color: black;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+
+      section {
+        padding: 24px;
+      }
+
+      table {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <header id="top">
+    <h1>The Missing Money Method</h1>
+    <h2>A to Z Guide: How to Find & Claim Unclaimed Funds for You or a Deceased Relative</h2>
+    <p>By Tc.CREIG | Entrepreneur & Philanthropist | Copyright 2026</p>
+    <button onclick="window.print()">Print / Save as PDF</button>
+  </header>
+
+  <nav>
+    <a href="#disclaimer">Disclaimer</a>
+    <a href="#intro">Introduction</a>
+    <a href="#chapter1">Chapter 1</a>
+    <a href="#chapter2">7-Step System</a>
+    <a href="#chapter3">Pro Tips</a>
+    <a href="#sites">Site List</a>
+    <a href="#action">Action Plan</a>
+  </nav>
+
+  <main class="container">
+
+    <section id="disclaimer">
+      <h2>Disclaimer</h2>
+      <div class="warning">
+        This guide is for informational purposes only. It is not legal, tax, estate, or financial advice.
+      </div>
+      <p>
+        Unclaimed property laws vary by state and province. Always verify procedures on the official state unclaimed property website.
+        The author is not affiliated with MissingMoney.com, NAUPA, or any state treasury office.
+      </p>
+      <p>
+        Consult an attorney for estate matters, large claims, disputed claims, or situations involving deceased relatives.
+      </p>
+    </section>
+
+    <section id="intro">
+      <h2>Introduction: There Is $49 Billion in Unclaimed Money Waiting</h2>
+
+      <p>
+        Every state holds billions in forgotten bank accounts, uncashed checks, insurance payouts, utility deposits,
+        and safe deposit box contents. When companies cannot find you, they turn that money over to the state.
+        It sits there until you claim it.
+      </p>
+
+      <div class="highlight">
+        You are not applying for money. You are claiming money that may already belong to you.
+      </div>
+
+      <h3>Key Facts</h3>
+      <ul>
+        <li>100% legal: States want to return this money to rightful owners.</li>
+        <li>No fees to search: Official state sites and MissingMoney.com are free.</li>
+        <li>No time limit: Most states hold funds for a long time, and many hold them indefinitely.</li>
+        <li>Average claim may range from small amounts to hundreds or thousands of dollars.</li>
+        <li>Time required: about 10 minutes to search and about 30 minutes to file with documents.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Why I Built The Missing Money Method</h2>
+
+      <p>
+        I created this resource after researching the unclaimed-property process and testing it myself. During that process, I located funds connected to me and ultimately received a check from the State of Florida.
+      </p>
+
+      <p>
+        That experience showed me that many people may have legitimate unclaimed property but simply don't know where to look or how the process works.
+      </p>
+
+      <p>
+        I created The Missing Money Method as a free educational resource to help people understand the process and find the official government resources they need.
+      </p>
+
+      <p>
+        This website does not charge users to search for unclaimed property and is not affiliated with any state treasury office.
+      </p>
+    </section>
+
+    <section id="chapter1">
+      <h2>Chapter 1: Understanding Unclaimed Property</h2>
+
+      <h3>What Counts as Unclaimed Property?</h3>
+      <ul>
+        <li>Dormant bank accounts</li>
+        <li>Savings bonds</li>
+        <li>Uncashed payroll checks</li>
+        <li>Uncashed dividend checks</li>
+        <li>Insurance policy payouts or refunds</li>
+        <li>Utility deposits</li>
+        <li>Rental deposits</li>
+        <li>Stocks and mutual funds</li>
+        <li>Safe deposit box contents</li>
+        <li>Inheritances where heirs could not be located</li>
+      </ul>
+
+      <h3>Why It Goes Unclaimed</h3>
+      <p>
+        You moved. A check got lost. You forgot about an old account. A relative died and heirs did not know about the assets.
+        After a period of inactivity, companies must report and turn over the property to the state.
+      </p>
+
+      <h3>Who Holds It?</h3>
+      <p>
+        Each U.S. state has an Unclaimed Property Office, usually connected to the State Treasurer, Controller, or Comptroller.
+        Canada has similar unclaimed balance and provincial programs.
+      </p>
+    </section>
+
+    <section id="chapter2">
+      <h2>Chapter 2: The 7-Step System to Claim Unclaimed Funds</h2>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Step 1: Prepare Your Information</h3>
+          <p>Gather your full legal name, previous names, old addresses, date of birth, and identifying information.</p>
+        </div>
+
+        <div class="card">
+          <h3>Step 2: Search</h3>
+          <p>Use MissingMoney.com and official state sites. Search all states where you lived, worked, or did business.</p>
+        </div>
+
+        <div class="card">
+          <h3>Step 3: Verify Ownership</h3>
+          <p>Match the name, address, holder, and property details before filing a claim.</p>
+        </div>
+
+        <div class="card">
+          <h3>Step 4: Gather Documents</h3>
+          <p>Prepare ID, proof of address, proof of SSN if required, and estate documents if claiming for a deceased person.</p>
+        </div>
+
+        <div class="card">
+          <h3>Step 5: File the Claim</h3>
+          <p>Submit online when available. If mailing, send copies unless the state specifically requires originals.</p>
+        </div>
+
+        <div class="card">
+          <h3>Step 6: Follow Up</h3>
+          <p>Track your claim status and respond quickly to requests for more proof.</p>
+        </div>
+
+        <div class="card">
+          <h3>Step 7: Keep Records</h3>
+          <p>Save copies of forms, documents, correspondence, and payment records.</p>
+        </div>
+      </div>
+
+      <h3>Documents for Yourself</h3>
+      <ul>
+        <li>Government-issued photo ID</li>
+        <li>Proof of SSN, if required</li>
+        <li>Proof of address connected to the unclaimed record</li>
+      </ul>
+
+      <h3>Documents for a Deceased Relative</h3>
+      <ul>
+        <li>Death certificate</li>
+        <li>Proof of relationship</li>
+        <li>Your government-issued ID</li>
+        <li>Probate documents, Letters Testamentary, or Small Estate Affidavit if required</li>
+      </ul>
+    </section>
+
+    <section id="chapter3">
+      <h2>Chapter 3: Special Situations & Pro Tips</h2>
+
+      <h3>For Deceased Relatives: Who Can Claim?</h3>
+      <p>Common priority order:</p>
+      <ol>
+        <li>Executor of the estate</li>
+        <li>Spouse</li>
+        <li>Children</li>
+        <li>Parents</li>
+        <li>Siblings</li>
+      </ol>
+
+      <div class="warning">
+        If multiple heirs exist, the state may split the funds or require signatures from multiple people.
+      </div>
+
+      <h3>Pro Tips</h3>
+      <ul>
+        <li>Search maiden names, middle initials, nicknames, and misspellings.</li>
+        <li>Search every state where you or the deceased person lived, worked, or owned property.</li>
+        <li>Check every year because new unclaimed property is reported regularly.</li>
+        <li>Beware of companies charging fees to find money you can search for free.</li>
+        <li>For claims over $10,000 or complicated estate claims, consider legal help.</li>
+      </ul>
+
+      <div class="success">
+        Best habit: Search your name, your spouse’s name, your parents’ names, and deceased relatives’ names once per year.
+      </div>
+    </section>
+
+    <section id="sites">
+      <h2>Master Site List</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Best For</th>
+            <th>Site</th>
+            <th>Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>40+ U.S. states at once</td>
+            <td>MissingMoney.com</td>
+            <td><a href="https://www.missingmoney.com" target="_blank">Visit Site</a></td>
+          </tr>
+          <tr>
+            <td>All U.S. states directory</td>
+            <td>NAUPA Official List</td>
+            <td><a href="https://unclaimed.org" target="_blank">Visit Site</a></td>
+          </tr>
+          <tr>
+            <td>California</td>
+            <td>California State Controller</td>
+            <td><a href="https://ucpi.sco.ca.gov" target="_blank">Visit Site</a></td>
+          </tr>
+          <tr>
+            <td>New York</td>
+            <td>Office of Unclaimed Funds</td>
+            <td><a href="https://www.osc.state.ny.us/ouf" target="_blank">Visit Site</a></td>
+          </tr>
+          <tr>
+            <td>Texas</td>
+            <td>Texas Comptroller</td>
+            <td><a href="https://claimittexas.gov" target="_blank">Visit Site</a></td>
+          </tr>
+          <tr>
+            <td>Florida</td>
+            <td>FL Treasure Hunt</td>
+            <td><a href="https://www.fltreasurehunt.gov" target="_blank">Visit Site</a></td>
+          </tr>
+          <tr>
+            <td>Canada banks</td>
+            <td>Bank of Canada Unclaimed Balances</td>
+            <td><a href="https://www.bankofcanada.ca/unclaimed-balances" target="_blank">Visit Site</a></td>
+          </tr>
+          <tr>
+            <td>Ontario</td>
+            <td>Ontario Unclaimed Property</td>
+            <td><a href="https://www.ontario.ca/page/unclaimed-property" target="_blank">Visit Site</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="action">
+      <h2>Chapter 4: Your 15-Minute Action Plan</h2>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Minutes 1–5</h3>
+          <p>Go to MissingMoney.com and search your full name, old addresses, and name variations.</p>
+        </div>
+
+        <div class="card">
+          <h3>Minutes 5–10</h3>
+          <p>Search parents, grandparents, deceased relatives, maiden names, and common misspellings.</p>
+        </div>
+
+        <div class="card">
+          <h3>Minutes 10–15</h3>
+          <p>Click “Claim” on any possible match and start gathering the required documents.</p>
+        </div>
+      </div>
+
+      <div class="highlight">
+        The money may already be there. Your job is to search, verify, file, and follow up.
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>Start Your Search Today</h2>
+      <p>
+        Do not wait. Search your name, your old addresses, and your family names.
+        This simple habit can uncover money that has been sitting with the state for years.
+      </p>
+      <a class="button" href="https://www.missingmoney.com" target="_blank">Start at MissingMoney.com</a>
+      <button onclick="window.print()">Print / Save This Guide</button>
+    </section>
+
+    <section>
+      <h2>Copyright</h2>
+      <p>
+        Copyright © 2026 by Tc.CREIG. All rights reserved.
+      </p>
+      <p>
+        No part of this publication may be reproduced without written permission from the author,
+        except for brief quotations in reviews.
+      </p>
+    </section>
+
+  </main>
+
+  <button class="top-btn" id="topBtn" onclick="scrollToTop()">↑</button>
+
+  <footer>
+    The Missing Money Method | Created by Tc.CREIG | Entrepreneur & Philanthropist
+  </footer>
+
+  <script>
+    const topBtn = document.getElementById("topBtn");
+    const progressBar = document.getElementById("progressBar");
+
+    window.addEventListener("scroll", function () {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrollPercent = (scrollTop / scrollHeight) * 100;
+
+      progressBar.style.width = scrollPercent + "%";
+
+      if (scrollTop > 350) {
+        topBtn.style.display = "block";
+      } else {
+        topBtn.style.display = "none";
+      }
+    });
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+  </script>
+
+</body>
+</html>
