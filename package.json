@@ -1,0 +1,9 @@
+{
+  "name": "missing-money-method",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Missing Money Method with optional $27 Claim Packet",
+  "dependencies": {
+    "stripe": "^18.5.0"
+  }
+}

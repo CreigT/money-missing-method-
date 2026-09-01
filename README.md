@@ -6,69 +6,78 @@ A free public educational tool that helps people find legitimate unclaimed-prope
 
 **Sponsored by CREIGNIFICENT LLC.**
 
-## Purpose
+## Business Model
 
-Missing Money Method was created to make the unclaimed-property search process easier to understand for everyday users. It directs people toward official state and government resources rather than collecting claims or financial information itself.
+The public unclaimed-property search guide remains free. Users who find a possible claim can optionally purchase a **$27 one-time Claim Packet** for organizational and document-preparation assistance.
 
-## Key Features
+The Claim Packet includes:
 
-- Free to use
-- No login or account required
-- No payment required
-- No user database
-- No collection of claim information
-- Links users to official unclaimed-property resources
-- Mobile-friendly public guide
-- Social sharing preview metadata
-- Vercel Web Analytics enabled for anonymous traffic measurement
+- Personalized claim checklist
+- Document checklist
+- Claim cover-letter template
+- Follow-up letter template
+- California digital-asset notes when applicable
+- Browser-generated printable/PDF packet
 
-## Privacy Approach
-
-Missing Money Method is intentionally designed with data minimization in mind.
-
-The application does not require users to create an account or submit sensitive personal information to the application. Users conduct actual searches and claims through the appropriate official government or state resources.
-
-Vercel Web Analytics is used to understand basic website traffic and performance.
+Government searches and claim filing may be available free. The paid packet does not guarantee recovery and is not legal, tax, estate, or financial advice.
 
 ## Technology
 
-- HTML
-- CSS
-- JavaScript
+- HTML / CSS / JavaScript
+- Vercel serverless functions
+- Stripe Checkout
 - GitHub
 - Vercel
-- Vercel Web Analytics
+
+## Required Vercel Environment Variable
+
+`STRIPE_SECRET_KEY`
+
+Use a Stripe test secret key while testing. Replace it with the live secret key only when the checkout flow is approved for production.
+
+## Payment Flow
+
+1. User searches for unclaimed property using free resources.
+2. User opens `/claim-packet.html`.
+3. `/api/create-checkout-session` creates a one-time $27 Stripe Checkout Session.
+4. Stripe returns the buyer to `/claim-packet.html?session_id=...`.
+5. `/api/verify-payment` retrieves the Checkout Session and confirms `payment_status === "paid"`.
+6. Only after verification does the claim-intake form unlock.
+7. The completed packet is generated in the browser and can be printed or saved as PDF.
+
+## Privacy and Security
+
+The claim intake intentionally tells users not to enter Social Security numbers, driver's-license numbers, bank information, passwords, wallet seed phrases, or private keys. The packet is generated client-side and no claim database is included in this version.
+
+Stripe handles payment-card entry. The Stripe secret key stays server-side in Vercel environment variables and must never be committed to GitHub.
+
+## Repository Structure
+
+- `index.html` — free public guide
+- `claim-packet.html` — optional paid Claim Packet checkout/intake/generator
+- `api/create-checkout-session.js` — creates Stripe Checkout Session
+- `api/verify-payment.js` — verifies successful payment before unlocking intake
+- `package.json` — Stripe dependency
+- `social-preview.png` — social sharing image
+- `README.md` — project documentation
+- `SECURITY.md` — security and privacy guidance
 
 ## Deployment
 
 The production application is deployed through Vercel from this repository.
 
-Production URL:
+Before production launch:
 
-`https://money-missing-method.vercel.app`
-
-## Repository Structure
-
-- `index.html` — main application
-- `social-preview.png` — social sharing image
-- `README.md` — project documentation
-- `SECURITY.md` — security and privacy guidance
+1. Add `STRIPE_SECRET_KEY` to the Vercel project.
+2. Deploy the feature branch as a preview.
+3. Complete a Stripe test-mode purchase.
+4. Confirm the intake remains locked without a paid Checkout Session.
+5. Confirm the packet generates and prints correctly after payment.
+6. Merge the feature branch to `main` only after the test passes.
 
 ## Safety and Disclaimer
 
-Missing Money Method is an independent educational resource. It is not a government agency and does not hold, approve, process, or distribute unclaimed funds.
-
-Users should verify all claim procedures directly with the official government agency responsible for the property.
-
-This application provides informational assistance only and is not legal, tax, estate, or financial advice.
-
-## Project Status
-
-**Production / Active**
-
-The application is live, deployed, and monitored through Vercel Analytics.
-
-## Ownership and Sponsorship
+Missing Money Method is an independent educational resource. It is not a government agency and does not hold, approve, process, or distribute unclaimed funds. Users should verify all claim procedures directly with the official government agency responsible for the property.
 
 Created by Tc.CREIG.
 
